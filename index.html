@@ -1,0 +1,942 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Phùng Đức Tài — Portfolio</title>
+    <meta
+      name="description"
+      content="Phùng Đức Tài — Sinh viên Công Nghệ Thông Tin tại Đại học Vinh. Web Designer, Content Creator, TikToker 200K+ followers."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,700;1,800&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body>
+    <!-- ═══════════ CURSOR GLOW (desktop) ═══════════ -->
+    <div class="cursor-glow" id="cursorGlow"></div>
+
+    <!-- ═══════════ BACKGROUND EFFECTS ═══════════ -->
+    <div class="bg-grid" aria-hidden="true"></div>
+    <div class="aurora aurora-1" aria-hidden="true"></div>
+    <div class="aurora aurora-2" aria-hidden="true"></div>
+    <div class="aurora aurora-3" aria-hidden="true"></div>
+    <div class="floating-particles" id="particles" aria-hidden="true"></div>
+
+    <!-- ═══════════ NAVIGATION ═══════════ -->
+    <nav class="navbar" id="navbar">
+      <div class="nav-brand">
+        <!-- <span class="brand-logo"
+          ><img
+            src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/meta/default.svg"
+            alt=""
+        /></span>
+        <span class="brand-text">Đức Tài</span> -->
+      </div>
+      <div class="nav-links" id="navLinks">
+        <a href="#hero" class="nav-link active" data-section="hero"
+          >Giới thiệu</a
+        >
+        <a href="#about" class="nav-link" data-section="about">Về tôi</a>
+        <a href="#skills" class="nav-link" data-section="skills">Kỹ năng</a>
+        <a href="#achievements" class="nav-link" data-section="achievements"
+          >Thành tựu</a
+        >
+        <a href="#games" class="nav-link" data-section="games">Trò chơi</a>
+        <a href="#music" class="nav-link" data-section="music">Nhạc nền</a>
+        <a href="#contact" class="nav-link" data-section="contact">Liên hệ</a>
+      </div>
+      <button class="nav-hamburger" id="navHamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+
+    <main class="cv-page" id="mainContent">
+      <!-- ═══════════ HERO SECTION ═══════════ -->
+      <section class="hero-section" id="hero">
+        <div class="hero-content reveal">
+          <div class="hero-tag">
+            <span class="tag-dot"></span>
+            <span>&lt;/&gt;</span>
+          </div>
+          <h1 class="hero-title">
+            <span class="title-line font-body">Xin chào, tôi là</span>
+            <span class="title-name gradient-text font-display"
+              >Phùng Đức Tài</span
+            >
+          </h1>
+          <div class="hero-typing">
+            <span class="typing-label"></span>
+
+            <span class="typing-text font-mono" id="typingText"></span>
+            <span class="typing-cursor">|</span>
+          </div>
+          <p class="hero-desc">
+            "Don't compare yourself with anyone in this world. If you do so, you
+            are insulting yourself." - Bill Gates
+          </p>
+          <div class="hero-actions">
+            <a href="#contact" class="btn btn-primary">
+              <img
+                src="https://thesvg.org/icons/await/default.svg"
+                alt=""
+                class="btn-icon"
+              />
+              <span>Liên hệ ngay</span>
+            </a>
+            <a href="#games" class="btn btn-outline">
+              <img
+                src="https://cdn.jsdelivr.net/gh/ductaihjhj/svg@main/gamebanana.svg"
+                alt="GameBanana"
+                style="width: 20px; height: 20px; vertical-align: middle"
+              />
+              <span>Chơi game</span>
+            </a>
+          </div>
+          <div class="hero-stats">
+            <div class="stat-item">
+              <span class="stat-number font-heading" data-count="200">0</span
+              ><span class="stat-suffix font-heading">K+</span>
+              <span class="stat-label">Followers</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+              <span class="stat-number font-heading" data-count="2">0</span
+              ><span class="stat-suffix font-heading">+</span>
+              <span class="stat-label">Năm kinh nghiệm</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+              <span class="stat-number font-heading" data-count="10">0</span
+              ><span class="stat-suffix font-heading">+</span>
+              <span class="stat-label">Dự án</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-photo reveal reveal-right">
+          <div class="photo-ring photo-ring-1"></div>
+          <div class="photo-ring photo-ring-2"></div>
+          <div class="photo-ring photo-ring-3"></div>
+          <div class="photo-frame">
+            <div class="photo-glow"></div>
+            <img src="./img/ductai.jpeg" alt="Phùng Đức Tài" loading="eager" />
+          </div>
+          <div class="photo-badge photo-badge-1">
+            <img
+              src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/figma/default.svg"
+              alt=""
+              class="badge-icon"
+            />
+            <span>Designer</span>
+          </div>
+          <div class="photo-badge photo-badge-2">
+            <img
+              src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/visual-studio-code/default.svg"
+              alt=""
+              class="badge-icon"
+            />
+            <span>Developer</span>
+          </div>
+          <div class="photo-badge photo-badge-3">
+            <img
+              src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/tiktok/default.svg"
+              alt=""
+              class="badge-icon"
+            />
+            <span>Creator</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════ ABOUT SECTION ═══════════ -->
+      <section class="section about-section" id="about">
+        <div class="section-header reveal">
+          <span class="section-tag font-mono">01</span>
+          <h2 class="section-title font-display">
+            Về <span class="gradient-text">tôi</span>
+          </h2>
+          <div class="section-line"></div>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-card glass-card reveal">
+            <div class="about-icon">
+              <img
+                src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/semantic-scholar/default.svg"
+                alt=""
+                class="about-icon-img"
+              />
+            </div>
+            <h3 class="font-heading">Học vấn</h3>
+            <p>Đại học Vinh — Ngành Công Nghệ Thông Tin</p>
+            <span class="about-meta font-mono">2024 – Hiện tại</span>
+          </div>
+          <div
+            class="about-card glass-card reveal"
+            style="--reveal-delay: 0.1s"
+          >
+            <div class="about-icon">
+              <img
+                src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/smmix/default.svg"
+                alt=""
+                class="about-icon-img"
+              />
+            </div>
+            <h3 class="font-heading">Mục tiêu</h3>
+            <p>
+              Thử thách bản thân trong môi trường mới, phát triển kỹ năng qua
+              các dự án thực tế và đóng góp cho đội nhóm.
+            </p>
+          </div>
+          <div
+            class="about-card glass-card reveal"
+            style="--reveal-delay: 0.2s"
+          >
+            <div class="about-icon">
+              <img
+                src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/argo/default.svg"
+                alt=""
+                class="about-icon-img"
+              />
+            </div>
+            <h3 class="font-heading">Sở thích</h3>
+            <div class="interest-tags">
+              <span class="interest-tag">
+                <img
+                  src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/spotify/default.svg"
+                  alt=""
+                  class="tag-icon"
+                />
+                Nghe nhạc
+              </span>
+              <span class="interest-tag">
+                <img
+                  src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/capcut/default.svg"
+                  alt=""
+                  class="tag-icon"
+                />
+                Edit video
+              </span>
+              <span class="interest-tag">
+                <img
+                  src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/canva/default.svg"
+                  alt=""
+                  class="tag-icon"
+                />
+                Thiết kế
+              </span>
+              <span class="interest-tag">
+                <img
+                  src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/instagram/default.svg"
+                  alt=""
+                  class="tag-icon"
+                />
+                Sáng tạo
+              </span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════ SKILLS SECTION ═══════════ -->
+      <section class="section skills-section" id="skills">
+        <div class="section-header reveal">
+          <span class="section-tag font-mono">02</span>
+          <h2 class="section-title font-display">
+            Kỹ <span class="gradient-text">năng</span>
+          </h2>
+          <div class="section-line"></div>
+        </div>
+
+        <div class="skills-grid">
+          <!-- Technical Skills -->
+          <div class="skill-category reveal">
+            <h3 class="skill-cat-title font-heading">
+              <img
+                src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/stackblitz/default.svg"
+                alt=""
+                class="cat-icon-img"
+              />
+              Kỹ năng kỹ thuật
+            </h3>
+            <div class="tech-cards">
+              <div class="tech-card glass-card">
+                <img
+                  src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/html5/default.svg"
+                  alt="HTML5"
+                />
+                <span class="font-mono">HTML5</span>
+                <div class="tech-bar">
+                  <div class="tech-bar-fill" data-level="85"></div>
+                </div>
+              </div>
+              <div class="tech-card glass-card">
+                <img
+                  src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/css/default.svg"
+                  alt="CSS3"
+                />
+                <span class="font-mono">CSS3</span>
+                <div class="tech-bar">
+                  <div class="tech-bar-fill" data-level="80"></div>
+                </div>
+              </div>
+              <div class="tech-card glass-card">
+                <img
+                  src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/javascript/default.svg"
+                  alt="JavaScript"
+                />
+                <span class="font-mono">JavaScript</span>
+                <div class="tech-bar">
+                  <div class="tech-bar-fill" data-level="70"></div>
+                </div>
+              </div>
+              <div class="tech-card glass-card">
+                <img
+                  src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/canva/default.svg"
+                  alt="Canva"
+                />
+                <span class="font-mono">Canva</span>
+                <div class="tech-bar">
+                  <div class="tech-bar-fill" data-level="90"></div>
+                </div>
+              </div>
+              <div class="tech-card glass-card">
+                <img
+                  src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/capcut/default.svg"
+                  alt="CapCut"
+                />
+                <span class="font-mono">CapCut</span>
+                <div class="tech-bar">
+                  <div class="tech-bar-fill" data-level="88"></div>
+                </div>
+              </div>
+              <div class="tech-card glass-card">
+                <img
+                  src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/github/dark.svg"
+                  alt="GitHub"
+                />
+                <span class="font-mono">GitHub</span>
+                <div class="tech-bar">
+                  <div class="tech-bar-fill" data-level="65"></div>
+                </div>
+              </div>
+              <div class="tech-card glass-card">
+                <img
+                  src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/react/default.svg"
+                  alt="React"
+                />
+                <span class="font-mono">React</span>
+                <div class="tech-bar">
+                  <div class="tech-bar-fill" data-level="72"></div>
+                </div>
+              </div>
+              <div class="tech-card glass-card">
+                <img
+                  src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/nextdotjs/default.svg"
+                  alt="Next.js"
+                />
+                <span class="font-mono">Next.js</span>
+                <div class="tech-bar">
+                  <div class="tech-bar-fill" data-level="68"></div>
+                </div>
+              </div>
+              <div class="tech-card glass-card">
+                <img
+                  src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/tailwind-css/default.svg"
+                  alt="Tailwind CSS"
+                />
+                <span class="font-mono">Tailwind</span>
+                <div class="tech-bar">
+                  <div class="tech-bar-fill" data-level="75"></div>
+                </div>
+              </div>
+              <div class="tech-card glass-card">
+                <img
+                  src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/nodedotjs/default.svg"
+                  alt="Node.js"
+                />
+                <span class="font-mono">Node.js</span>
+                <div class="tech-bar">
+                  <div class="tech-bar-fill" data-level="65"></div>
+                </div>
+              </div>
+              <div class="tech-card glass-card">
+                <img
+                  src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/shadcn-ui/default.svg"
+                  alt="shadcn/ui"
+                />
+                <span class="font-mono">shadcn/ui</span>
+                <div class="tech-bar">
+                  <div class="tech-bar-fill" data-level="70"></div>
+                </div>
+              </div>
+              <div class="tech-card glass-card">
+                <img
+                  src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/python/default.svg"
+                  alt="Python"
+                />
+                <span class="font-mono">Python</span>
+                <div class="tech-bar">
+                  <div class="tech-bar-fill" data-level="70"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Soft Skills -->
+          <div class="skill-category reveal" style="--reveal-delay: 0.15s">
+            <h3 class="skill-cat-title font-heading">
+              <img
+                src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/notion/default.svg"
+                alt=""
+                class="cat-icon-img"
+              />
+              Kỹ năng mềm
+            </h3>
+            <div class="soft-skills-list">
+              <div class="soft-skill glass-card">
+                <div class="soft-icon">
+                  <img
+                    src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/slack/default.svg"
+                    alt=""
+                    class="soft-icon-img"
+                  />
+                </div>
+                <div class="soft-info">
+                  <span class="soft-name font-heading">Teamwork</span>
+                  <span class="soft-desc">Làm việc nhóm hiệu quả</span>
+                </div>
+              </div>
+              <div class="soft-skill glass-card">
+                <div class="soft-icon">
+                  <img
+                    src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/openai/default.svg"
+                    alt=""
+                    class="soft-icon-img"
+                  />
+                </div>
+                <div class="soft-info">
+                  <span class="soft-name font-heading">Critical Thinking</span>
+                  <span class="soft-desc">Tư duy phản biện</span>
+                </div>
+              </div>
+              <div class="soft-skill glass-card">
+                <div class="soft-icon">
+                  <img
+                    src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/discord/default.svg"
+                    alt=""
+                    class="soft-icon-img"
+                  />
+                </div>
+                <div class="soft-info">
+                  <span class="soft-name font-heading">Communication</span>
+                  <span class="soft-desc">Giao tiếp tốt</span>
+                </div>
+              </div>
+              <div class="soft-skill glass-card">
+                <div class="soft-icon">
+                  <img
+                    src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/google-calendar/default.svg"
+                    alt=""
+                    class="soft-icon-img"
+                  />
+                </div>
+                <div class="soft-info">
+                  <span class="soft-name font-heading">Time Management</span>
+                  <span class="soft-desc">Quản lý thời gian</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Skill Set -->
+          <div class="skill-category reveal" style="--reveal-delay: 0.3s">
+            <h3 class="skill-cat-title font-heading">
+              <img
+                src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/editorconfig/default.svg"
+                alt=""
+                class="cat-icon-img"
+              />
+              Bộ kỹ năng
+            </h3>
+            <div class="skillset-tags">
+              <span class="skillset-tag">Web Design</span>
+              <span class="skillset-tag">UI/UX Design</span>
+              <span class="skillset-tag">HTML/CSS</span>
+              <span class="skillset-tag">JavaScript</span>
+              <span class="skillset-tag">React</span>
+              <span class="skillset-tag">Next.js</span>
+              <span class="skillset-tag">Tailwind CSS</span>
+              <span class="skillset-tag">Node.js</span>
+              <span class="skillset-tag">shadcn/ui</span>
+              <span class="skillset-tag">Video Editing</span>
+              <span class="skillset-tag">Content Creation</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════ ACHIEVEMENTS ═══════════ -->
+      <section class="section achievements-section" id="achievements">
+        <div class="section-header reveal">
+          <span class="section-tag font-mono">03</span>
+          <h2 class="section-title font-display">
+            Thành <span class="gradient-text">tựu</span>
+          </h2>
+          <div class="section-line"></div>
+        </div>
+
+        <div class="achievements-grid">
+          <div class="achievement-card glass-card reveal">
+            <div class="ach-glow"></div>
+            <div class="ach-icon">
+              <img
+                src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/youtube/default.svg"
+                alt=""
+                class="ach-icon-img"
+              />
+            </div>
+            <h3 class="font-heading">Content Creator</h3>
+            <p>Sáng tạo nội dung chất lượng trên nhiều nền tảng mạng xã hội</p>
+          </div>
+          <div
+            class="achievement-card glass-card reveal"
+            style="--reveal-delay: 0.1s"
+          >
+            <div class="ach-glow"></div>
+            <div class="ach-icon">
+              <img
+                src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/tiktok/default.svg"
+                alt=""
+                class="ach-icon-img"
+              />
+            </div>
+            <h3 class="font-heading">200.000+ Followers</h3>
+            <p>Xây dựng cộng đồng TikTok với hơn 200 nghìn người theo dõi</p>
+          </div>
+          <div
+            class="achievement-card glass-card reveal"
+            style="--reveal-delay: 0.2s"
+          >
+            <div class="ach-glow"></div>
+            <div class="ach-icon">
+              <img
+                src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/facebook/default.svg"
+                alt=""
+                class="ach-icon-img"
+              />
+            </div>
+            <h3 class="font-heading">Đội truyền thông</h3>
+            <p>Thành viên Đội truyền thông Đại học Vinh</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════ MINI GAMES SECTION ═══════════ -->
+      <section class="section games-section" id="games">
+        <div class="section-header reveal">
+          <span class="section-tag font-mono">04</span>
+          <h2 class="section-title font-display">
+            Trò <span class="gradient-text">chơi</span>
+          </h2>
+          <div class="section-line"></div>
+        </div>
+        <p class="games-intro reveal">Người chơi là người thắng!</p>
+
+        <div class="games-grid">
+          <!-- Game 1: Memory Cards -->
+          <div class="game-card glass-card reveal">
+            <div class="game-header">
+              <img
+                src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/bitsy/default.svg"
+                alt=""
+                class="game-header-icon"
+              />
+              <h3 class="font-heading">Memory Cards</h3>
+              <p class="game-desc">Tìm các cặp icon giống nhau</p>
+            </div>
+            <div class="game-info">
+              <span class="game-stat font-mono" id="memoryMoves">Lượt: 0</span>
+              <span class="game-stat font-mono" id="memoryMatches"
+                >Đúng: 0/6</span
+              >
+            </div>
+            <div class="memory-board" id="memoryBoard"></div>
+            <button class="game-btn btn btn-primary" id="memoryRestart">
+              <span>Chơi lại</span>
+            </button>
+          </div>
+
+          <!-- Game 2: Click Speed Test -->
+          <div class="game-card glass-card reveal" style="--reveal-delay: 0.1s">
+            <div class="game-header">
+              <img
+                src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/apache-airflow/default.svg"
+                alt=""
+                class="game-header-icon"
+              />
+              <h3 class="font-heading">Click Speed</h3>
+              <p class="game-desc">
+                Nhấp chuột nhanh nhất có thể trong 5 giây!
+              </p>
+            </div>
+            <div class="game-info">
+              <span class="game-stat font-mono" id="clickTimer"
+                >Thời gian: 5s</span
+              >
+              <span class="game-stat font-mono" id="clickCPS">CPS: 0</span>
+            </div>
+            <div class="click-area" id="clickArea">
+              <div class="click-circle" id="clickCircle">
+                <span class="click-count font-display" id="clickCount">0</span>
+                <span class="click-label">clicks</span>
+              </div>
+            </div>
+            <button class="game-btn btn btn-primary" id="clickStart">
+              <span>Bắt đầu</span>
+            </button>
+          </div>
+
+          <!-- Game 3: Catch the Star -->
+          <div class="game-card glass-card reveal" style="--reveal-delay: 0.2s">
+            <div class="game-header">
+              <img
+                src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/stellar/default.svg"
+                alt=""
+                class="game-header-icon"
+              />
+              <h3 class="font-heading">Catch the Star</h3>
+              <p class="game-desc">
+                Bắt ngôi sao trước khi nó biến mất! 20 giây.
+              </p>
+            </div>
+            <div class="game-info">
+              <span class="game-stat font-mono" id="starScore">Điểm: 0</span>
+              <span class="game-stat font-mono" id="starTimer"
+                >Thời gian: 20s</span
+              >
+            </div>
+            <div class="star-arena" id="starArena">
+              <div class="star-target" id="starTarget">⭐</div>
+            </div>
+            <button class="game-btn btn btn-primary" id="starStart">
+              <span>Bắt đầu</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════ MUSIC SECTION ═══════════ -->
+      <section class="section music-section" id="music">
+        <div class="section-header reveal">
+          <span class="section-tag font-mono">05</span>
+          <h2 class="section-title font-display">
+            Nhạc <span class="gradient-text">nền</span>
+          </h2>
+          <div class="section-line"></div>
+        </div>
+
+        <div class="music-player reveal" id="musicPlayer">
+          <!-- Visualizer Bars Background -->
+          <div class="mp-visualizer" id="mpVisualizer">
+            <span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span>
+          </div>
+
+          <div class="mp-layout">
+            <!-- Album Art -->
+            <div class="mp-album" id="mpAlbum">
+              <img src="" alt="" class="mp-album-cover" id="mpCover" />
+              <img
+                src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/spotify/default.svg"
+                alt=""
+                class="mp-album-icon"
+                id="mpCoverFallback"
+              />
+              <div class="mp-disc">
+                <div class="mp-disc-ring"></div>
+                <div class="mp-disc-ring mp-disc-ring-2"></div>
+                <div class="mp-disc-dot"></div>
+              </div>
+            </div>
+
+            <!-- Track Info + Controls -->
+            <div class="mp-main">
+              <div class="mp-track-info">
+                <span class="mp-now-playing font-mono">
+                  <span class="mp-eq-mini" id="mpToggleBars"
+                    ><span></span><span></span><span></span
+                  ></span>
+                  ĐANG PHÁT
+                </span>
+                <h3 class="mp-title font-heading" id="mpTitle">
+                  Lofi Chill Vibes
+                </h3>
+                <p class="mp-artist" id="mpArtist">SoundHelix</p>
+              </div>
+
+              <!-- Progress -->
+              <div class="mp-progress-wrap" id="mpProgressWrap">
+                <div class="mp-progress-bar">
+                  <div class="mp-progress-fill" id="mpProgressFill"></div>
+                </div>
+                <div class="mp-times">
+                  <span class="font-mono" id="mpCurrentTime">0:00</span>
+                  <span class="font-mono" id="mpDuration">0:00</span>
+                </div>
+              </div>
+
+              <!-- Controls -->
+              <div class="mp-controls">
+                <button
+                  class="mp-btn mp-btn-sm"
+                  id="mpPrev"
+                  aria-label="Bài trước"
+                >
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <path d="M6 6h2v12H6zm3.5 6 8.5 6V6z" />
+                  </svg>
+                </button>
+                <button
+                  class="mp-btn mp-btn-play"
+                  id="mpPlayPause"
+                  aria-label="Phát/Dừng"
+                >
+                  <svg
+                    class="mp-icon-play"
+                    width="22"
+                    height="22"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <path d="M8 5v14l11-7z" />
+                  </svg>
+                  <svg
+                    class="mp-icon-pause"
+                    width="22"
+                    height="22"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <path d="M6 19h4V5H6zm8-14v14h4V5z" />
+                  </svg>
+                </button>
+                <button
+                  class="mp-btn mp-btn-sm"
+                  id="mpNext"
+                  aria-label="Bài tiếp"
+                >
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6z" />
+                  </svg>
+                </button>
+                <div class="mp-volume">
+                  <button
+                    class="mp-btn mp-btn-sm"
+                    id="mpVolBtn"
+                    aria-label="Âm lượng"
+                  >
+                    <svg
+                      class="mp-vol-on"
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                    >
+                      <path
+                        d="M3 9v6h4l5 5V4L7 9H3zm13.5 3A4.5 4.5 0 0 0 14 8.5v7a4.47 4.47 0 0 0 2.5-3.5zM14 3.23v2.06a7.007 7.007 0 0 1 0 13.42v2.06A9.007 9.007 0 0 0 14 3.23z"
+                      />
+                    </svg>
+                    <svg
+                      class="mp-vol-off"
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                    >
+                      <path
+                        d="M16.5 12A4.5 4.5 0 0 0 14 8.5v2.09l2.41 2.41c.06-.31.09-.63.09-.99zM19 12a7 7 0 0 0-2.78-5.58l-1.42 1.42A5.01 5.01 0 0 1 17 12c0 .94-.26 1.82-.72 2.58l1.42 1.42A6.96 6.96 0 0 0 19 12zM4.27 3 3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06a8.99 8.99 0 0 0 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4 9.91 6.09 12 8.18V4z"
+                      />
+                    </svg>
+                  </button>
+                  <input
+                    type="range"
+                    class="mp-vol-slider"
+                    id="mpVolSlider"
+                    min="0"
+                    max="100"
+                    value="60"
+                    aria-label="Âm lượng"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Playlist (tự động tạo bởi JS từ mảng playlist) -->
+          <div class="mp-playlist" id="mpPlaylist"></div>
+        </div>
+      </section>
+
+      <!-- ═══════════ CONTACT SECTION ═══════════ -->
+      <section class="section contact-section" id="contact">
+        <div class="section-header reveal">
+          <span class="section-tag font-mono">06</span>
+          <h2 class="section-title font-display">
+            Liên <span class="gradient-text">hệ</span>
+          </h2>
+          <div class="section-line"></div>
+        </div>
+
+        <div class="contact-grid reveal">
+          <a
+            class="contact-card glass-card"
+            href="mailto:ductai206.user@gmail.com"
+          >
+            <div class="contact-icon-wrap">
+              <img
+                src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/gmail/default.svg"
+                alt=""
+                class="contact-svg-icon"
+              />
+            </div>
+            <div class="contact-info">
+              <span class="contact-label font-mono">Email</span>
+              <span class="contact-value">ductai206.user@gmail.com</span>
+            </div>
+          </a>
+          <a class="contact-card glass-card" href="tel:0344172906">
+            <div class="contact-icon-wrap">
+              <img
+                src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/whatsapp/default.svg"
+                alt=""
+                class="contact-svg-icon"
+              />
+            </div>
+            <div class="contact-info">
+              <span class="contact-label font-mono">Điện thoại</span>
+              <span class="contact-value">0344 172 xxx</span>
+            </div>
+          </a>
+          <div class="contact-card glass-card">
+            <div class="contact-icon-wrap">
+              <img
+                src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/google-maps/default.svg"
+                alt=""
+                class="contact-svg-icon"
+              />
+            </div>
+            <div class="contact-info">
+              <span class="contact-label font-mono">Địa chỉ</span>
+              <span class="contact-value">Vinh, Nghệ An</span>
+            </div>
+          </div>
+          <div class="contact-card glass-card">
+            <div class="contact-icon-wrap">
+              <img
+                src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/docsify/default.svg"
+                alt=""
+                class="contact-svg-icon"
+              />
+            </div>
+            <div class="contact-info">
+              <span class="contact-label font-mono">Ngày sinh</span>
+              <span class="contact-value">25/09/2006</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Social Links -->
+        <div class="social-links reveal">
+          <a href="#" class="social-link glass-card" aria-label="GitHub">
+            <img
+              src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/github/dark.svg"
+              alt="GitHub"
+            />
+          </a>
+          <a href="#" class="social-link glass-card" aria-label="TikTok">
+            <img
+              src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/tiktok/default.svg"
+              alt="TikTok"
+            />
+          </a>
+          <a href="#" class="social-link glass-card" aria-label="Facebook">
+            <img
+              src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/facebook/default.svg"
+              alt="Facebook"
+            />
+          </a>
+          <a href="#" class="social-link glass-card" aria-label="Instagram">
+            <img
+              src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/instagram/default.svg"
+              alt="Instagram"
+            />
+          </a>
+          <a href="#" class="social-link glass-card" aria-label="YouTube">
+            <img
+              src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/youtube/default.svg"
+              alt="YouTube"
+            />
+          </a>
+        </div>
+      </section>
+
+      <!-- ═══════════ FOOTER ═══════════ -->
+      <footer class="footer reveal">
+        <div class="footer-line"></div>
+        <div class="footer-content">
+          <p class="font-body">
+            Thiết kế & phát triển bởi
+            <strong class="gradient-text">Phùng Đức Tài</strong>
+          </p>
+          <p class="footer-sub font-mono">© 2026 — Bản quyền được bảo lưu.</p>
+          <!-- <p class="footer-powered">
+            Icons bởi
+            <a href="https://thesvg.org" target="_blank" rel="noopener">
+              <img
+                src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/glincker/default.svg"
+                alt="theSVG"
+                class="footer-thesvg-icon"
+              />
+              theSVG
+            </a>
+          </p> -->
+        </div>
+      </footer>
+    </main>
+
+    <!-- ═══════════ BACK TO TOP ═══════════ -->
+    <button class="back-to-top" id="backToTop" aria-label="Về đầu trang">
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2.5"
+      >
+        <path d="M18 15l-6-6-6 6" />
+      </svg>
+    </button>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>
