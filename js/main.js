@@ -10,6 +10,7 @@
   document.addEventListener("DOMContentLoaded", initAllEffects);
 
   function initAllEffects() {
+    initThemeSwitcher();
     initCursorGlow();
     initNavbar();
     initScrollReveal();
@@ -28,6 +29,42 @@
 
     // Music Player
     initMusicPlayer();
+  }
+
+  /* ══════════════════════════════════════════════
+     THEME SWITCHER
+     ══════════════════════════════════════════════ */
+  function initThemeSwitcher() {
+    const switcher = document.getElementById("themeSwitcher");
+    if (!switcher) return;
+    const dots = switcher.querySelectorAll(".theme-dot");
+    const themes = ["galaxy", "cyber", "sunset"];
+
+    // Load saved theme
+    const saved = localStorage.getItem("portfolio-theme") || "galaxy";
+    applyTheme(saved);
+
+    function applyTheme(name) {
+      // Set data-theme on html (galaxy = default, no attribute)
+      if (name === "galaxy") {
+        document.documentElement.removeAttribute("data-theme");
+      } else {
+        document.documentElement.setAttribute("data-theme", name);
+      }
+      // Highlight active dot
+      dots.forEach((d) => d.classList.toggle("active", d.dataset.theme === name));
+      localStorage.setItem("portfolio-theme", name);
+    }
+
+    // Click on dots
+    dots.forEach((dot) => {
+      dot.addEventListener("click", () => {
+        const theme = dot.dataset.theme;
+        document.body.classList.add("theme-transitioning");
+        applyTheme(theme);
+        setTimeout(() => document.body.classList.remove("theme-transitioning"), 600);
+      });
+    });
   }
 
   /* ══════════════════════════════════════════════
@@ -341,9 +378,9 @@
       "discord",
       "spotify",
       "react",
-      "nodejs",
-      "tailwindcss",
-      "nextjs",
+      "nodedotjs",
+      "tailwind-css",
+      "nextdotjs",
       "shadcn-ui",
       "vercel",
     ];
@@ -681,6 +718,12 @@
         artist: "Binz, SOOBIN",
         src: "./music/em.mp3",
         cover: "./music/gaplai.jpg",
+      },
+      {
+        title: "Beauty And A Beat",
+        artist: "Justin Bieber, ft. Nicki Minaj",
+        src: "./music/justin.mp3",
+        cover: "./music/justin.jpg",
       },
       {
         title: "Beauty And A Beat",
