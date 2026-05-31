@@ -143,14 +143,11 @@
 
     const words = [
       "Web Designer",
-      "React Developer",
       "Content Creator",
       "UI/UX Designer",
       "Next.js Developer",
-      "TikToker 200K+",
-      "Video Editor",
-      "Full-stack Dev",
-      "Sinh viên CNTT",
+      "Editor",
+      "Full-stack Developer",
     ];
 
     let wordIdx = 0,
