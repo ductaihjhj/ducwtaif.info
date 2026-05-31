@@ -97,9 +97,13 @@
     });
 
     // Block scroll-through on iOS when menu open
-    navLinks.addEventListener("touchmove", (e) => {
-      e.preventDefault();
-    }, { passive: false });
+    navLinks.addEventListener(
+      "touchmove",
+      (e) => {
+        e.preventDefault();
+      },
+      { passive: false },
+    );
 
     function updateActiveLink() {
       let current = "";
@@ -675,6 +679,18 @@
         src: "./music/exitsign.mp3",
         cover: "./music/Exit Sign.jpg",
       },
+      {
+        title: "Em (feat. SOOBIN)",
+        artist: "Binz, SOOBIN",
+        src: "./music/em.mp3",
+        cover: "./music/gaplai.jpg",
+      },
+      {
+        title: "Beauty And A Beat",
+        artist: "Justin Bieber, ft. Nicki Minaj",
+        src: "./music/justin.mp3",
+        cover: "./music/justin.jpg",
+      },
       // ─── Thêm bài hát khác ở đây ───
       // {
       //   title: "Tên bài hát",
@@ -695,14 +711,24 @@
       const thumbSrc = track.cover
         ? track.cover
         : "https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/spotify/default.svg";
-      const thumbClass = track.cover ? "mp-pl-cover" : "mp-pl-cover mp-pl-cover-icon";
+      const thumbClass = track.cover
+        ? "mp-pl-cover"
+        : "mp-pl-cover mp-pl-cover-icon";
 
       playlistEl.innerHTML =
-        '<img src="' + thumbSrc + '" alt="" class="' + thumbClass + '" />' +
+        '<img src="' +
+        thumbSrc +
+        '" alt="" class="' +
+        thumbClass +
+        '" />' +
         '<div class="mp-pl-info">' +
-          '<span class="mp-pl-name font-heading">' + track.title + '</span>' +
-          '<span class="mp-pl-artist font-mono">' + track.artist + '</span>' +
-        '</div>' +
+        '<span class="mp-pl-name font-heading">' +
+        track.title +
+        "</span>" +
+        '<span class="mp-pl-artist font-mono">' +
+        track.artist +
+        "</span>" +
+        "</div>" +
         '<span class="mp-pl-dur font-mono" id="mpPlDur">—</span>';
     }
 
