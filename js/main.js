@@ -81,6 +81,7 @@
       hamburger.classList.remove("active");
       navLinks.classList.remove("open");
       document.body.classList.remove("menu-open");
+      navbar.classList.remove("menu-active");
     }
 
     hamburger.addEventListener("click", (e) => {
@@ -88,6 +89,7 @@
       const isOpen = navLinks.classList.toggle("open");
       hamburger.classList.toggle("active", isOpen);
       document.body.classList.toggle("menu-open", isOpen);
+      navbar.classList.toggle("menu-active", isOpen);
     });
 
     links.forEach((link) => {
@@ -701,8 +703,7 @@
           '<span class="mp-pl-name font-heading">' + track.title + '</span>' +
           '<span class="mp-pl-artist font-mono">' + track.artist + '</span>' +
         '</div>' +
-        '<span class="mp-pl-dur font-mono" id="mpPlDur">—</span>' +
-        '<span class="mp-pl-counter font-mono">' + (currentTrack + 1) + ' / ' + playlist.length + '</span>';
+        '<span class="mp-pl-dur font-mono" id="mpPlDur">—</span>';
     }
 
     function updateCover(track) {
