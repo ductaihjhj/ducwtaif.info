@@ -687,61 +687,22 @@
     audio.volume = 0.6;
     audio.preload = "metadata";
 
-    // ── Build playlist UI dynamically ──
-    function buildPlaylistUI() {
-      playlistEl.innerHTML = "";
-      playlist.forEach((track, i) => {
-        const num = String(i + 1).padStart(2, "0");
-        const item = document.createElement("div");
-        item.className = "mp-pl-item" + (i === 0 ? " active" : "");
-        item.dataset.index = i;
+    // ── Show only current track in playlist bar ──
+    function buildCurrentTrackUI() {
+      const track = playlist[currentTrack];
+      const thumbSrc = track.cover
+        ? track.cover
+        : "https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/spotify/default.svg";
+      const thumbClass = track.cover ? "mp-pl-cover" : "mp-pl-cover mp-pl-cover-icon";
 
-        // Cover thumbnail or Spotify icon
-        const thumbSrc = track.cover
-          ? track.cover
-          : "https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/spotify/default.svg";
-        const thumbClass = track.cover
-          ? "mp-pl-cover"
-          : "mp-pl-cover mp-pl-cover-icon";
-
-        item.innerHTML =
-          '<span class="mp-pl-num font-mono">' +
-          num +
-          "</span>" +
-          '<img src="' +
-          thumbSrc +
-          '" alt="" class="' +
-          thumbClass +
-          '" />' +
-          '<div class="mp-pl-info">' +
-          '<span class="mp-pl-name font-heading">' +
-          track.title +
-          "</span>" +
-          '<span class="mp-pl-artist font-mono">' +
-          track.artist +
-          "</span>" +
-          "</div>" +
-          '<span class="mp-pl-dur font-mono">—</span>';
-
-        // Click to play
-        item.addEventListener("click", () => {
-          if (i === currentTrack && !audio.paused) {
-            pause();
-          } else {
-            loadTrack(i);
-            play();
-          }
-        });
-
-        playlistEl.appendChild(item);
-      });
-    }
-
-    function updatePlaylistUI() {
-      const items = playlistEl.querySelectorAll(".mp-pl-item");
-      items.forEach((item, i) => {
-        item.classList.toggle("active", i === currentTrack);
-      });
+      playlistEl.innerHTML =
+        '<img src="' + thumbSrc + '" alt="" class="' + thumbClass + '" />' +
+        '<div class="mp-pl-info">' +
+          '<span class="mp-pl-name font-heading">' + track.title + '</span>' +
+          '<span class="mp-pl-artist font-mono">' + track.artist + '</span>' +
+        '</div>' +
+        '<span class="mp-pl-dur font-mono" id="mpPlDur">—</span>' +
+        '<span class="mp-pl-counter font-mono">' + (currentTrack + 1) + ' / ' + playlist.length + '</span>';
     }
 
     function updateCover(track) {
@@ -764,7 +725,7 @@
       currentTimeEl.textContent = "0:00";
       durationEl.textContent = "0:00";
       updateCover(track);
-      updatePlaylistUI();
+      buildCurrentTrackUI();
     }
 
     function formatTime(sec) {
@@ -823,11 +784,9 @@
     audio.addEventListener("ended", nextTrack);
     audio.addEventListener("loadedmetadata", () => {
       durationEl.textContent = formatTime(audio.duration);
-      const items = playlistEl.querySelectorAll(".mp-pl-item");
-      if (items[currentTrack]) {
-        const durSpan = items[currentTrack].querySelector(".mp-pl-dur");
-        if (durSpan) durSpan.textContent = formatTime(audio.duration);
-      }
+      // Update duration in playlist bar
+      const plDur = document.getElementById("mpPlDur");
+      if (plDur) plDur.textContent = formatTime(audio.duration);
     });
 
     playBtn.addEventListener("click", togglePlay);
@@ -857,22 +816,8 @@
       volSlider.value = audio.muted ? 0 : audio.volume * 100;
     });
 
-    // Preload all track durations
-    playlist.forEach((track, i) => {
-      const tmp = new Audio();
-      tmp.preload = "metadata";
-      tmp.src = track.src;
-      tmp.addEventListener("loadedmetadata", () => {
-        const items = playlistEl.querySelectorAll(".mp-pl-item");
-        if (items[i]) {
-          const d = items[i].querySelector(".mp-pl-dur");
-          if (d) d.textContent = formatTime(tmp.duration);
-        }
-      });
-    });
-
     // Init
-    buildPlaylistUI();
+    buildCurrentTrackUI();
     loadTrack(0);
   }
 })();

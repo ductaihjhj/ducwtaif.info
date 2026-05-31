@@ -1767,22 +1767,6 @@ button {
   opacity: 0;
 }
 
-/* Playlist cover thumbnail */
-.mp-pl-cover {
-  width: 36px;
-  height: 36px;
-  border-radius: 6px;
-  object-fit: cover;
-  flex-shrink: 0;
-  background: rgba(255, 255, 255, 0.04);
-}
-
-.mp-pl-cover-icon {
-  object-fit: none;
-  object-position: center;
-  padding: 6px;
-}
-
 .mp-disc {
   position: absolute;
   inset: 0;
@@ -1844,7 +1828,7 @@ button {
   display: inline-flex;
   align-items: flex-end;
   gap: 2px;
-  height: 12px;
+  height: 14px;
 }
 
 .mp-eq-mini span {
@@ -1852,30 +1836,77 @@ button {
   width: 3px;
   border-radius: 1px;
   background: #1ed760;
-  height: 4px;
-  transition: height 0.15s ease;
+  height: 3px;
 }
 
-.music-player.is-playing .mp-eq-mini span {
-  animation: eqBar 0.8s ease-in-out infinite alternate;
+.music-player.is-playing .mp-eq-mini span:nth-child(1) {
+  animation: eqRand1 1.2s ease-in-out infinite;
+}
+.music-player.is-playing .mp-eq-mini span:nth-child(2) {
+  animation: eqRand2 1s ease-in-out infinite;
+}
+.music-player.is-playing .mp-eq-mini span:nth-child(3) {
+  animation: eqRand3 1.5s ease-in-out infinite;
 }
 
-.mp-eq-mini span:nth-child(1) {
-  animation-delay: 0s;
-}
-.mp-eq-mini span:nth-child(2) {
-  animation-delay: 0.2s;
-}
-.mp-eq-mini span:nth-child(3) {
-  animation-delay: 0.1s;
-}
-
-@keyframes eqBar {
+@keyframes eqRand1 {
   0% {
     height: 3px;
   }
+  20% {
+    height: 11px;
+  }
+  40% {
+    height: 5px;
+  }
+  60% {
+    height: 14px;
+  }
+  80% {
+    height: 7px;
+  }
   100% {
+    height: 3px;
+  }
+}
+@keyframes eqRand2 {
+  0% {
+    height: 8px;
+  }
+  15% {
+    height: 3px;
+  }
+  35% {
+    height: 13px;
+  }
+  55% {
+    height: 4px;
+  }
+  75% {
+    height: 10px;
+  }
+  100% {
+    height: 8px;
+  }
+}
+@keyframes eqRand3 {
+  0% {
+    height: 5px;
+  }
+  25% {
+    height: 14px;
+  }
+  50% {
+    height: 3px;
+  }
+  70% {
+    height: 9px;
+  }
+  90% {
     height: 12px;
+  }
+  100% {
+    height: 5px;
   }
 }
 
@@ -2048,40 +2079,30 @@ button {
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
 }
 
-/* ── Playlist ── */
+/* ── Playlist (Current Track Only) ── */
 .mp-playlist {
   border-top: 1px solid rgba(255, 255, 255, 0.05);
   position: relative;
   z-index: 1;
-}
-
-.mp-pl-item {
+  padding: 16px 40px;
   display: flex;
   align-items: center;
-  gap: 16px;
-  padding: 14px 40px;
-  cursor: pointer;
-  transition: background var(--transition-fast);
+  gap: 14px;
 }
 
-.mp-pl-item:hover {
+.mp-pl-cover {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  object-fit: cover;
+  flex-shrink: 0;
   background: rgba(255, 255, 255, 0.04);
 }
 
-.mp-pl-item.active {
-  background: rgba(30, 215, 96, 0.06);
-}
-
-.mp-pl-num {
-  font-size: 13px;
-  color: var(--text-muted);
-  width: 24px;
-  text-align: center;
-  flex-shrink: 0;
-}
-
-.mp-pl-item.active .mp-pl-num {
-  color: #1ed760;
+.mp-pl-cover-icon {
+  object-fit: none;
+  object-position: center;
+  padding: 8px;
 }
 
 .mp-pl-info {
@@ -2095,14 +2116,10 @@ button {
 .mp-pl-name {
   font-size: 14px;
   font-weight: 600;
-  color: var(--text-primary);
+  color: #1ed760;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-}
-
-.mp-pl-item.active .mp-pl-name {
-  color: #1ed760;
 }
 
 .mp-pl-artist {
@@ -2114,6 +2131,16 @@ button {
   font-size: 12px;
   color: var(--text-muted);
   flex-shrink: 0;
+}
+
+.mp-pl-counter {
+  font-size: 12px;
+  color: var(--text-muted);
+  flex-shrink: 0;
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 /* ── Music Player Responsive ── */
@@ -2147,7 +2174,7 @@ button {
     margin-left: 0;
   }
 
-  .mp-pl-item {
+  .mp-playlist {
     padding: 12px 20px;
   }
 
@@ -2296,8 +2323,9 @@ button {
     opacity: 0;
     visibility: hidden;
     transform: translate3d(0, 0, 0);
-    transition: opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1),
-                visibility 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    transition:
+      opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+      visibility 0.35s cubic-bezier(0.4, 0, 0.2, 1);
     overflow: hidden;
     will-change: opacity;
     -webkit-overflow-scrolling: touch;
@@ -2316,13 +2344,10 @@ button {
     border-radius: var(--radius-sm);
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(255, 255, 255, 0.04);
+    /* Khi đóng: snap ngay, không animation */
     transform: translate3d(0, 20px, 0);
     opacity: 0;
-    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
-                opacity 0.35s ease,
-                color 0.2s ease,
-                background 0.2s ease;
-    will-change: transform, opacity;
+    transition: none;
   }
   .nav-link.active {
     background: rgba(124, 58, 237, 0.15);
@@ -2331,17 +2356,35 @@ button {
   .nav-link.active::after {
     display: none;
   }
+  /* Khi mở: chạy animation stagger mượt mà */
   .nav-links.open .nav-link {
     transform: translate3d(0, 0, 0);
     opacity: 1;
+    transition:
+      transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+      opacity 0.3s ease;
   }
-  .nav-links.open .nav-link:nth-child(1) { transition-delay: 0.04s; }
-  .nav-links.open .nav-link:nth-child(2) { transition-delay: 0.07s; }
-  .nav-links.open .nav-link:nth-child(3) { transition-delay: 0.10s; }
-  .nav-links.open .nav-link:nth-child(4) { transition-delay: 0.13s; }
-  .nav-links.open .nav-link:nth-child(5) { transition-delay: 0.16s; }
-  .nav-links.open .nav-link:nth-child(6) { transition-delay: 0.19s; }
-  .nav-links.open .nav-link:nth-child(7) { transition-delay: 0.22s; }
+  .nav-links.open .nav-link:nth-child(1) {
+    transition-delay: 0.04s;
+  }
+  .nav-links.open .nav-link:nth-child(2) {
+    transition-delay: 0.07s;
+  }
+  .nav-links.open .nav-link:nth-child(3) {
+    transition-delay: 0.1s;
+  }
+  .nav-links.open .nav-link:nth-child(4) {
+    transition-delay: 0.13s;
+  }
+  .nav-links.open .nav-link:nth-child(5) {
+    transition-delay: 0.16s;
+  }
+  .nav-links.open .nav-link:nth-child(6) {
+    transition-delay: 0.19s;
+  }
+  .nav-links.open .nav-link:nth-child(7) {
+    transition-delay: 0.22s;
+  }
 
   .nav-hamburger {
     display: flex;
@@ -2367,9 +2410,15 @@ button {
     font-size: 11px;
     padding: 8px 14px;
   }
-  .photo-badge-1 { left: 0; }
-  .photo-badge-2 { right: -2%; }
-  .photo-badge-3 { left: 5%; }
+  .photo-badge-1 {
+    left: 0;
+  }
+  .photo-badge-2 {
+    right: -2%;
+  }
+  .photo-badge-3 {
+    left: 5%;
+  }
   .hero-stats {
     gap: 20px;
     flex-wrap: wrap;
