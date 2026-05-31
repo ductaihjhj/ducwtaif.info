@@ -21,6 +21,7 @@
     initCardGlow();
     initBackToTop();
     initSmoothScroll();
+    initClickRipple();
 
     // Mini Games
     initMemoryGame();
@@ -45,13 +46,11 @@
     applyTheme(saved);
 
     function applyTheme(name) {
-      // Set data-theme on html (galaxy = default, no attribute)
       if (name === "galaxy") {
         document.documentElement.removeAttribute("data-theme");
       } else {
         document.documentElement.setAttribute("data-theme", name);
       }
-      // Highlight active dot
       dots.forEach((d) => d.classList.toggle("active", d.dataset.theme === name));
       localStorage.setItem("portfolio-theme", name);
     }
@@ -64,6 +63,32 @@
         applyTheme(theme);
         setTimeout(() => document.body.classList.remove("theme-transitioning"), 600);
       });
+    });
+  }
+
+  /* ══════════════════════════════════════════════
+     CLICK RIPPLE
+     ══════════════════════════════════════════════ */
+  function initClickRipple() {
+    const targets = ".btn, .glass-card, .game-card, .tech-card, .social-link, .nav-link";
+    document.addEventListener("click", (e) => {
+      const el = e.target.closest(targets);
+      if (!el) return;
+      // Ensure container can hold ripple
+      const style = getComputedStyle(el);
+      if (style.position === "static") el.style.position = "relative";
+      el.style.overflow = "hidden";
+
+      const rect = el.getBoundingClientRect();
+      const size = Math.max(rect.width, rect.height) * 2;
+      const x = e.clientX - rect.left - size / 2;
+      const y = e.clientY - rect.top - size / 2;
+
+      const ripple = document.createElement("span");
+      ripple.className = "ripple";
+      ripple.style.cssText = `width:${size}px;height:${size}px;left:${x}px;top:${y}px;`;
+      el.appendChild(ripple);
+      ripple.addEventListener("animationend", () => ripple.remove());
     });
   }
 
@@ -699,13 +724,6 @@
 
     if (!player) return;
 
-    /* ╔══════════════════════════════════════════╗
-       ║  👇  THÊM / SỬA BÀI HÁT Ở ĐÂY  👇    ║
-       ║  title  : Tên bài hát                   ║
-       ║  artist : Tên ca sĩ                     ║
-       ║  src    : Đường dẫn file MP3             ║
-       ║  cover  : Đường dẫn ảnh bìa (hoặc "")   ║
-       ╚══════════════════════════════════════════╝ */
     const playlist = [
       {
         title: "Exit Sign",
@@ -725,19 +743,6 @@
         src: "./music/justin.mp3",
         cover: "./music/justin.jpg",
       },
-      {
-        title: "Beauty And A Beat",
-        artist: "Justin Bieber, ft. Nicki Minaj",
-        src: "./music/justin.mp3",
-        cover: "./music/justin.jpg",
-      },
-      // ─── Thêm bài hát khác ở đây ───
-      // {
-      //   title: "Tên bài hát",
-      //   artist: "Ca sĩ",
-      //   src: "./music/ten-file.mp3",
-      //   cover: "./music/ten-file-cover.jpg",
-      // },
     ];
 
     let currentTrack = 0;

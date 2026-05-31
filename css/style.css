@@ -155,8 +155,8 @@ body.theme-transitioning .music-player {
   position: relative;
   display: flex;
   align-items: center;
-  gap: 4px;
-  padding: 6px 10px;
+  gap: 5px;
+  padding: 6px 12px;
   border-radius: var(--radius-full);
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -177,22 +177,16 @@ body.theme-transitioning .music-player {
               box-shadow 0.3s ease;
   flex-shrink: 0;
 }
-.theme-dot:nth-child(1) {
-  background: linear-gradient(135deg, #7c3aed, #ec4899);
-}
-.theme-dot:nth-child(2) {
-  background: linear-gradient(135deg, #00d4aa, #00e5ff);
-}
-.theme-dot:nth-child(3) {
-  background: linear-gradient(135deg, #e8770e, #ef4444);
-}
+.theme-dot[data-theme="galaxy"]  { background: linear-gradient(135deg, #7c3aed, #ec4899); }
+.theme-dot[data-theme="cyber"]   { background: linear-gradient(135deg, #00d4aa, #00e5ff); }
+.theme-dot[data-theme="sunset"]  { background: linear-gradient(135deg, #e8770e, #ef4444); }
+
 .theme-dot.active {
   transform: scale(1.5);
-  box-shadow: 0 0 8px currentColor;
 }
-.theme-dot:nth-child(1).active { box-shadow: 0 0 10px rgba(124, 58, 237, 0.6); }
-.theme-dot:nth-child(2).active { box-shadow: 0 0 10px rgba(0, 212, 170, 0.6); }
-.theme-dot:nth-child(3).active { box-shadow: 0 0 10px rgba(245, 158, 11, 0.6); }
+.theme-dot[data-theme="galaxy"].active  { box-shadow: 0 0 10px rgba(124, 58, 237, 0.7); }
+.theme-dot[data-theme="cyber"].active   { box-shadow: 0 0 10px rgba(0, 212, 170, 0.7); }
+.theme-dot[data-theme="sunset"].active  { box-shadow: 0 0 10px rgba(245, 158, 11, 0.7); }
 
 /* ── Reset ── */
 *,
@@ -1759,7 +1753,7 @@ button {
   flex: 1;
   max-width: 12px;
   border-radius: 4px 4px 0 0;
-  background: linear-gradient(to top, #1ed760, rgba(30, 215, 96, 0.3));
+  background: linear-gradient(to top, var(--emerald), rgba(30, 215, 96, 0.3));
   animation: vizBar 1.2s ease-in-out infinite alternate;
   height: 10%;
 }
@@ -1960,7 +1954,7 @@ button {
   gap: 8px;
   font-size: 11px;
   font-weight: 700;
-  color: #1ed760;
+  color: var(--emerald);
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
@@ -1977,7 +1971,7 @@ button {
   display: block;
   width: 3px;
   border-radius: 1px;
-  background: #1ed760;
+  background: var(--emerald);
   height: 3px;
 }
 
@@ -2089,7 +2083,7 @@ button {
 .mp-progress-fill {
   height: 100%;
   border-radius: var(--radius-full);
-  background: #1ed760;
+  background: var(--emerald);
   width: 0%;
   transition: width 0.1s linear;
   position: relative;
@@ -2145,7 +2139,7 @@ button {
 .mp-btn-play {
   width: 48px;
   height: 48px;
-  background: #1ed760;
+  background: var(--emerald);
   color: #0a0a1a;
   box-shadow: 0 4px 20px rgba(30, 215, 96, 0.35);
   transition:
@@ -2258,7 +2252,7 @@ button {
 .mp-pl-name {
   font-size: 14px;
   font-weight: 600;
-  color: #1ed760;
+  color: var(--emerald);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -2735,4 +2729,37 @@ button {
 }
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(124, 58, 237, 0.5);
+}
+
+/* ══════════════════════════════════════════════
+   CLICK RIPPLE EFFECT
+   ══════════════════════════════════════════════ */
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,255,255,0.22) 0%, transparent 70%);
+  transform: scale(0);
+  animation: rippleExpand 0.5s ease-out forwards;
+  pointer-events: none;
+  z-index: 10;
+}
+@keyframes rippleExpand {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+/* Subtle press on interactive elements */
+.btn:active,
+.nav-link:active,
+.social-link:active {
+  transform: scale(0.95) !important;
+  transition: transform 0.08s ease !important;
+}
+.glass-card:active,
+.game-card:active,
+.tech-card:active {
+  transform: scale(0.985) !important;
+  transition: transform 0.08s ease !important;
 }
