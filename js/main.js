@@ -78,14 +78,31 @@
     checkScroll();
 
     hamburger.addEventListener("click", () => {
+      const isOpen = navLinks.classList.toggle("open");
       hamburger.classList.toggle("active");
-      navLinks.classList.toggle("open");
+      if (isOpen) {
+        // Lock scroll — save position
+        const scrollY = window.scrollY;
+        document.body.classList.add("menu-open");
+        document.body.style.top = -scrollY + "px";
+        document.body.dataset.scrollY = scrollY;
+      } else {
+        // Unlock scroll — restore position
+        const scrollY = parseInt(document.body.dataset.scrollY || "0", 10);
+        document.body.classList.remove("menu-open");
+        document.body.style.top = "";
+        window.scrollTo(0, scrollY);
+      }
     });
 
     links.forEach((link) => {
       link.addEventListener("click", () => {
         hamburger.classList.remove("active");
         navLinks.classList.remove("open");
+        const scrollY = parseInt(document.body.dataset.scrollY || "0", 10);
+        document.body.classList.remove("menu-open");
+        document.body.style.top = "";
+        window.scrollTo(0, scrollY);
       });
     });
 
