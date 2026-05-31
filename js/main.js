@@ -77,34 +77,27 @@
     window.addEventListener("scroll", checkScroll, { passive: true });
     checkScroll();
 
-    hamburger.addEventListener("click", () => {
+    function closeMenu() {
+      hamburger.classList.remove("active");
+      navLinks.classList.remove("open");
+      document.body.classList.remove("menu-open");
+    }
+
+    hamburger.addEventListener("click", (e) => {
+      e.stopPropagation();
       const isOpen = navLinks.classList.toggle("open");
-      hamburger.classList.toggle("active");
-      if (isOpen) {
-        // Lock scroll — save position
-        const scrollY = window.scrollY;
-        document.body.classList.add("menu-open");
-        document.body.style.top = -scrollY + "px";
-        document.body.dataset.scrollY = scrollY;
-      } else {
-        // Unlock scroll — restore position
-        const scrollY = parseInt(document.body.dataset.scrollY || "0", 10);
-        document.body.classList.remove("menu-open");
-        document.body.style.top = "";
-        window.scrollTo(0, scrollY);
-      }
+      hamburger.classList.toggle("active", isOpen);
+      document.body.classList.toggle("menu-open", isOpen);
     });
 
     links.forEach((link) => {
-      link.addEventListener("click", () => {
-        hamburger.classList.remove("active");
-        navLinks.classList.remove("open");
-        const scrollY = parseInt(document.body.dataset.scrollY || "0", 10);
-        document.body.classList.remove("menu-open");
-        document.body.style.top = "";
-        window.scrollTo(0, scrollY);
-      });
+      link.addEventListener("click", () => closeMenu());
     });
+
+    // Block scroll-through on iOS when menu open
+    navLinks.addEventListener("touchmove", (e) => {
+      e.preventDefault();
+    }, { passive: false });
 
     function updateActiveLink() {
       let current = "";

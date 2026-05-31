@@ -90,11 +90,13 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   line-height: 1.6;
+  -webkit-tap-highlight-color: transparent;
 }
 body.menu-open {
-  overflow: hidden;
-  position: fixed;
-  width: 100%;
+  overflow: hidden !important;
+  touch-action: none;
+  height: 100vh;
+  height: 100dvh;
 }
 
 a {
@@ -296,7 +298,7 @@ button {
   align-items: center;
   justify-content: space-between;
   padding: 0 clamp(20px, 4vw, 60px);
-  z-index: 1000;
+  z-index: 1100;
   transition:
     background var(--transition-smooth),
     box-shadow var(--transition-smooth),
@@ -382,7 +384,10 @@ button {
   flex-direction: column;
   gap: 5px;
   padding: 8px;
-  z-index: 1001;
+  z-index: 1101;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 .nav-hamburger span {
   display: block;
@@ -391,8 +396,9 @@ button {
   background: var(--text-primary);
   border-radius: 2px;
   transition:
-    transform var(--transition-fast),
-    opacity var(--transition-fast);
+    transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform, opacity;
 }
 .nav-hamburger.active span:nth-child(1) {
   transform: rotate(45deg) translate(5px, 5px);
@@ -1158,9 +1164,12 @@ button {
   gap: 20px;
   background: var(--gradient-game);
   border: 1px solid rgba(255, 255, 255, 0.06);
+  overflow: hidden;
 }
-.game-card:hover {
-  transform: translateY(-4px);
+@media (hover: hover) {
+  .game-card:hover {
+    transform: translateY(-4px);
+  }
 }
 
 .game-header {
@@ -1225,6 +1234,8 @@ button {
   position: relative;
   perspective: 600px;
   user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 .memory-cell-inner {
   width: 100%;
@@ -1295,6 +1306,7 @@ button {
 /* ── Click Speed Game ── */
 .click-area {
   aspect-ratio: 4/3;
+  min-height: 200px;
   border-radius: var(--radius-md);
   background: linear-gradient(
     135deg,
@@ -1306,6 +1318,8 @@ button {
   place-items: center;
   cursor: pointer;
   user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
   transition: background var(--transition-fast);
   position: relative;
   overflow: hidden;
@@ -1374,6 +1388,7 @@ button {
 /* ── Star Catch Game ── */
 .star-arena {
   aspect-ratio: 4/3;
+  min-height: 200px;
   border-radius: var(--radius-md);
   background: linear-gradient(
     135deg,
@@ -1384,6 +1399,8 @@ button {
   position: relative;
   overflow: hidden;
   cursor: crosshair;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .star-target {
@@ -2253,83 +2270,85 @@ button {
 }
 
 /* ══════════════════════════════════════════════
-   RESPONSIVE — MOBILE
+   RESPONSIVE — MOBILE (≤768px)
    ══════════════════════════════════════════════ */
 @media (max-width: 768px) {
   :root {
-    --nav-height: 64px;
+    --nav-height: 60px;
   }
   .cv-page {
-    width: min(var(--content-width), calc(100% - 32px));
+    width: min(var(--content-width), calc(100% - 24px));
   }
 
   /* ── Mobile Menu Overlay ── */
   .nav-links {
     position: fixed;
     inset: 0;
-    z-index: 1000;
+    z-index: 1100;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 10px;
-    padding: 0 24px;
-    background: rgba(10, 10, 26, 0.98);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
+    gap: 6px;
+    padding: 0 32px;
+    background: rgba(10, 10, 26, 0.99);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
     opacity: 0;
     visibility: hidden;
-    transform: translateY(-12px);
-    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+    transform: translate3d(0, 0, 0);
+    transition: opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+                visibility 0.35s cubic-bezier(0.4, 0, 0.2, 1);
     overflow: hidden;
+    will-change: opacity;
+    -webkit-overflow-scrolling: touch;
   }
   .nav-links.open {
     opacity: 1;
     visibility: visible;
-    transform: translateY(0);
   }
+
   .nav-link {
     font-size: 20px;
-    padding: 16px 36px;
+    padding: 16px 28px;
     width: 100%;
-    max-width: 300px;
+    max-width: 320px;
     text-align: center;
-    border-radius: var(--radius-md);
-    transform: translateY(8px);
+    border-radius: var(--radius-sm);
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    transform: translate3d(0, 20px, 0);
     opacity: 0;
-    transition: transform 0.3s ease, opacity 0.3s ease, color 0.2s ease, background 0.2s ease;
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+                opacity 0.35s ease,
+                color 0.2s ease,
+                background 0.2s ease;
+    will-change: transform, opacity;
+  }
+  .nav-link.active {
+    background: rgba(124, 58, 237, 0.15);
+    border-color: rgba(124, 58, 237, 0.25);
+  }
+  .nav-link.active::after {
+    display: none;
   }
   .nav-links.open .nav-link {
-    transform: translateY(0);
+    transform: translate3d(0, 0, 0);
     opacity: 1;
   }
-  .nav-links.open .nav-link:nth-child(1) { transition-delay: 0.05s; }
-  .nav-links.open .nav-link:nth-child(2) { transition-delay: 0.08s; }
-  .nav-links.open .nav-link:nth-child(3) { transition-delay: 0.11s; }
-  .nav-links.open .nav-link:nth-child(4) { transition-delay: 0.14s; }
-  .nav-links.open .nav-link:nth-child(5) { transition-delay: 0.17s; }
-  .nav-links.open .nav-link:nth-child(6) { transition-delay: 0.20s; }
-  .nav-links.open .nav-link:nth-child(7) { transition-delay: 0.23s; }
+  .nav-links.open .nav-link:nth-child(1) { transition-delay: 0.04s; }
+  .nav-links.open .nav-link:nth-child(2) { transition-delay: 0.07s; }
+  .nav-links.open .nav-link:nth-child(3) { transition-delay: 0.10s; }
+  .nav-links.open .nav-link:nth-child(4) { transition-delay: 0.13s; }
+  .nav-links.open .nav-link:nth-child(5) { transition-delay: 0.16s; }
+  .nav-links.open .nav-link:nth-child(6) { transition-delay: 0.19s; }
+  .nav-links.open .nav-link:nth-child(7) { transition-delay: 0.22s; }
 
   .nav-hamburger {
     display: flex;
-    z-index: 1001;
+    z-index: 1101;
   }
 
-  /* Games grid single column */
-  .games-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-  .game-card {
-    padding: 24px 20px;
-  }
-
-  /* Memory board */
-  .memory-board {
-    gap: 6px;
-    aspect-ratio: auto;
-  }
-
+  /* ── Hero ── */
   .hero-section {
     min-height: auto;
     padding: 20px 0 60px;
@@ -2348,16 +2367,18 @@ button {
     font-size: 11px;
     padding: 8px 14px;
   }
-  .photo-badge-1 {
-    left: 0;
+  .photo-badge-1 { left: 0; }
+  .photo-badge-2 { right: -2%; }
+  .photo-badge-3 { left: 5%; }
+  .hero-stats {
+    gap: 20px;
+    flex-wrap: wrap;
   }
-  .photo-badge-2 {
-    right: -2%;
-  }
-  .photo-badge-3 {
-    left: 5%;
+  .stat-divider {
+    height: 30px;
   }
 
+  /* ── Sections ── */
   .section {
     padding: 60px 0;
   }
@@ -2368,6 +2389,8 @@ button {
   .section-line {
     display: none;
   }
+
+  /* ── Tech Cards ── */
   .tech-cards {
     grid-template-columns: repeat(3, 1fr);
     gap: 12px;
@@ -2379,19 +2402,56 @@ button {
     width: 36px;
     height: 36px;
   }
-  .hero-stats {
+
+  /* ── Games ── */
+  .games-grid {
+    grid-template-columns: 1fr;
     gap: 20px;
-    flex-wrap: wrap;
   }
-  .stat-divider {
-    height: 30px;
+  .game-card {
+    padding: 24px 20px;
   }
+  .memory-board {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+    aspect-ratio: auto;
+  }
+  .click-area,
+  .star-arena {
+    aspect-ratio: 3/2;
+    min-height: 180px;
+  }
+
+  /* ── Contact ── */
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  /* ── Music ── */
+  .mp-layout {
+    flex-direction: column;
+    gap: 24px;
+    padding: 24px 20px;
+  }
+  .mp-album {
+    width: 120px;
+    height: 120px;
+  }
+
+  /* ── Misc ── */
   .cursor-glow {
     display: none;
   }
 }
 
+/* ══════════════════════════════════════════════
+   RESPONSIVE — SMALL MOBILE (≤480px)
+   ══════════════════════════════════════════════ */
 @media (max-width: 480px) {
+  .cv-page {
+    width: calc(100% - 20px);
+  }
   .tech-cards {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -2416,7 +2476,6 @@ button {
   .memory-board {
     grid-template-columns: repeat(3, 1fr);
     gap: 4px;
-    aspect-ratio: auto;
   }
   .memory-front::after {
     font-size: 14px;
@@ -2424,6 +2483,14 @@ button {
   .memory-back img {
     width: 50%;
     height: 50%;
+  }
+  .nav-link {
+    font-size: 18px;
+    padding: 14px 24px;
+  }
+  .mp-album {
+    width: 100px;
+    height: 100px;
   }
 }
 
